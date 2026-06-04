@@ -55,6 +55,16 @@
     display: flex;
 }
 
+h2 {
+    font-family: Lutfey;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 4rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #f3ba16;
+}
+
 header {
     position: relative;
     width: 100%;
@@ -108,7 +118,7 @@ header li a {
 .hero {
     position: relative;
     height: 85dvh;
-    background: linear-gradient(to top, #f9f1b2ff, #f9f1b200 25%);
+    background: linear-gradient(to top, #fff4d5ff, #ebedb300 21%);
 }
 
 .hero::after {
@@ -116,8 +126,6 @@ header li a {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(135deg, var(--blue), var(--sand));
-    opacity: 0.5;
     height: 85dvh;
 }
 
@@ -131,7 +139,7 @@ header li a {
     margin: auto;
     text-align: center;
     padding-top: 16rem;
-    opacity: 0.9;
+    text-shadow: 0px 4px 20px #000000aa;
 }
 
 .hero video {
@@ -152,6 +160,7 @@ header li a {
     left: 0;
     top: 0;
     z-index: 2;
+    pointer-events: none;
 }
 
 .hero h3 {
@@ -190,15 +199,17 @@ header li a {
     position: relative;
     box-sizing: content-box;
     display: block;
-    width: 12.6875rem;
+    width: 15rem;
     height: 3.25rem;
+    font-size: 1.5rem;
     color: white;
-    font-family: Poppins;
+    font-family: Lutfey;
     font-weight: 400;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .hero a::before {
@@ -208,7 +219,7 @@ header li a {
     z-index: -1;
 
     border-radius: 125px;
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: #56adb033;
     backdrop-filter: blur(20px);
 }
 
@@ -218,27 +229,104 @@ header li a {
     inset: 0;
     z-index: -1;
 
-    border: 2px solid transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
     border-radius: 125px;
+    background-image: linear-gradient(165deg,
+            #c0eef0 0%,
+            #56adb000 60%,
+            #56adb000 80%,
+            #c0eef0 100%);
     background-origin: border-box;
     mask:
         linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+        linear-gradient(#fff 0 0) border-box;
     mask-composite: exclude;
-}
-
-.border-linear::after {
-    background-image: linear-gradient(90deg,
-            rgba(255, 255, 255, 0.2),
-            rgba(102, 102, 102, 0.2));
-}
-
-.border-gray::after {
-    background-image: linear-gradient(90deg,
-            rgba(255, 255, 255, 0.2),
-            rgba(255, 255, 255, 0.19));
 }
 
 .btn-container {
     padding-top: 1.2rem;
+}
+
+/* VALUES */
+
+.values {
+    background:
+        linear-gradient(to bottom, #fff4d5ff 11%, #fff4d5ff 52%, #ebedb300),
+        var(--sand);
+}
+
+.values-container {
+    padding-top: 5rem;
+}
+
+.values-subcontainer {
+    background: rgba(255, 255, 255, 0.74);
+    position: relative;
+    max-width: 116ch;
+    padding: 8rem 6.25rem;
+    border-radius: 4.68rem;
+    box-shadow: 0px 4px 11.7px rgba(191, 191, 191, 0.25);
+}
+
+.values-subcontainer::after {
+    content: "";
+    position: absolute;
+    left: 0;
+
+    top: 30%;
+}
+
+.values p {
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    letter-spacing: -1%;
+    text-align: justify;
+    color: #f3ba16;
+}
+
+.characters,
+.videos {
+    background: var(--sand);
+}
+
+/* VIDEOS */
+
+.videos {
+    padding-top: 6rem;
+}
+
+.videos span {
+    font-size: 6rem;
+}
+
+.videos h2 {
+    text-align: center;
+}
+
+/* CHARACTERS */
+
+.characters-container {
+    width: 137ch;
+    margin: auto;
+}
+
+.characters p {
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    letter-spacing: 0%;
+    text-align: justify;
+    color: #f3ba16;
+}
+
+/* STRIP */
+
+.movietape {
+    width: 100%;
 }
