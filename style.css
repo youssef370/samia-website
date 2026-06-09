@@ -255,7 +255,12 @@ header li a {
 
 /* VALUES */
 
+body {
+    overflow-x: hidden;
+}
+
 .values {
+    position: relative;
     background:
         linear-gradient(to bottom, #fff4d5ff 11%, #fff4d5ff 52%, #ebedb300),
         var(--sand);
@@ -264,6 +269,33 @@ header li a {
 .values-container {
     padding-top: 5rem;
     padding-left: 18rem;
+}
+
+.dad-container {
+    position: absolute;
+    content: "";
+    top: 0rem;
+    right: -20rem;
+    background: url("./assets/img/dad.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60rem;
+    height: 60rem;
+    transform: scaleX(-1) rotate(11deg);
+}
+
+.boy-container {
+    position: absolute;
+    content: "";
+    top: -4.7rem;
+    left: -8rem;
+    background: url("./assets/img/boy.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 35rem;
+    height: 35rem;
+    transform: rotate(31deg);
+    z-index: 5;
 }
 
 .values-subcontainer {
@@ -319,9 +351,50 @@ header li a {
     text-align: center;
 }
 
+.video-carousel {
+    padding: 6rem 0;
+    width: fit-content;
+    position: relative;
+}
+
+.video-carousel .thumbnail {
+    width: 69rem;
+    display: block;
+    margin: auto;
+    border-radius: 123px;
+    box-shadow: 0px 4px 49px 0px rgba(243, 186, 22, 1);
+}
+
+.hide {
+    display: none;
+}
+
+.arrow {
+    width: 7.5rem;
+    position: absolute;
+    top: 50%;
+}
+
+.left-arrow {
+    left: 2rem;
+    transform: scaleX(-1) translateY(-50%);
+}
+
+.right-arrow {
+    right: 2rem;
+    transform: translateY(-50%);
+}
+
+.play {
+    width: 16.375rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
 /* CHARACTERS */
 
 .group-container {
+    position: relative;
     background: radial-gradient(circle 50.75rem at center 40rem,
             rgba(86, 173, 176, 0.8) 13.08%,
             rgba(255, 248, 227, 0.8) 61.1%,
@@ -354,10 +427,45 @@ header li a {
     margin-top: 10rem;
 }
 
-.cloud-container img {
+.reversed {
+    transform: scaleX(-1);
+}
+
+.blurry {
+    filter: blur(5px);
+}
+
+.cloud {
     position: absolute;
-    left: 0;
-    top: 0;
+    transition: transform 0.1s ease-out;
+}
+
+.left {
+    left: -50px;
+}
+
+.right {
+    right: -50px;
+}
+
+#cloud-1 {
+    width: 27rem;
+    top: 17rem;
+}
+
+#cloud-2 {
+    width: 14.125rem;
+    top: 33rem;
+}
+
+#cloud-3 {
+    width: 21rem;
+    top: 23rem;
+}
+
+#cloud-4 {
+    width: 13.75rem;
+    top: 21.25rem;
 }
 
 /* STRIP */
@@ -450,6 +558,7 @@ header li a {
 .contact {
     background: linear-gradient(to bottom, #a4d3d5ff 0%, #a4d3d500 80%), #56adb0;
     color: white;
+    position: relative;
 }
 
 .contact * {
@@ -479,7 +588,7 @@ header li a {
     border: 2px solid rgba(10, 13, 23, 0.05);
     border-radius: 20px;
     padding-top: 22.5px;
-    z-index: 1;
+    z-index: 7;
 }
 
 .contact form::after {
@@ -526,10 +635,14 @@ header li a {
 /* FOOTER */
 
 footer {
-    background: linear-gradient(to top, #ffffffdd, #ffffff00 90%), #56adb0;
+    background: linear-gradient(to top, #ffffffdd, #ffffff00 60%), #56adb0;
     font-family: Lutfey, sans-serif;
     color: white;
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: -5rem;
+    padding-top: 5rem;
 }
 
 footer * {
@@ -560,20 +673,29 @@ footer .img-container img {
 }
 
 #mom {
-    right: -110px;
-    bottom: -50px;
+    position: absolute;
+    bottom: -5rem;
+    right: -5rem;
     width: 36rem;
     transform: scaleX(-1) rotate(1.31deg);
-    z-index: 3;
-    clip-path: inset(0 110px 50px 0);
+    z-index: 6;
+}
+
+.clip-container {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
 }
 
 #bottom-logo {
-    bottom: 0;
-    left: 0;
-    z-index: 2;
+    position: absolute;
+    bottom: 100px;
+    right: -200px;
     width: 53rem;
     transform: rotate(-27.39deg);
+    transform-origin: bottom right;
+    opacity: 0.2;
+    z-index: 1;
 }
 
 footer a,
