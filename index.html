@@ -29,9 +29,7 @@
         <section class="hero">
             <h1 dir="rtl">حكايات صغيرة… ودروس كبيرة</h1>
             <h3>Where little minds meet big adventures.</h3>
-            <div class="video-container">
-                <video src="assets/img/hero-bg.mp4" autoplay muted playsinline loop></video>
-            </div>
+            <video src="assets/img/hero-bg.mp4" autoplay muted playsinline loop></video>
             <p>
                 Educational cartoons and joyful stories made to inspire, teach, and
                 entertain children.
@@ -66,10 +64,10 @@
                 من قال أنّ التعلّم... <span id="typewrite"></span>
             </h2>
             <div class="video-carousel">
-                <div class="thumbnail-container" data-video-id="_3pXz7rIsoM">
+                <div class="thumbnail-container show" data-video-id="_3pXz7rIsoM">
                     <img src="assets/img/tajine.png" class="thumbnail" alt="">
                 </div>
-                <div class="thumbnail-container hide" data-video-id="KWK6WqvDmm4">
+                <div class="thumbnail-container" data-video-id="KWK6WqvDmm4">
                     <img src="assets/img/chebakia.png" class="thumbnail " alt="">
                 </div>
 
@@ -77,6 +75,17 @@
                 <img src="assets/img/arrow.png" alt="" id="right-arrow" class="right-arrow arrow">
                 <img src="assets/img/play.png" alt="" id="play-button" class="play arrow">
 
+            </div>
+
+            <div id="videoModal" class="modal-overlay">
+                <div class="modal-content">
+                    <button class="close-btn">&times;</button>
+                    <div class="iframe-container">
+                        <iframe id="modalPlayer" src="" frameborder="0" allow="autoplay; encrypted-media"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
             </div>
         </section>
         <section class="characters">
@@ -212,11 +221,61 @@
         const leftArrow = document.querySelector("#left-arrow");
         const rightArrow = document.querySelector("#right-arrow");
         const playButton = document.querySelector("#play-button");
-        const thumbnails = document.querySelectorAll("thumbnail");
+
+        alert(playButton)
+        let currentIndex = 0;
+
+        console.log(thumbnailContainers);
+        function updateCarousel(newIndex) {
+            thumbnailContainers[currentIndex].classList.remove("show");
+            currentIndex = newIndex;
+            thumbnailContainers[currentIndex].classList.add("show");
+        }
+
+        rightArrow.addEventListener("click", () => {
+            const nextIndex = (currentIndex + 1) % thumbnailContainers.length;
+            updateCarousel(nextIndex);
+
+        })
+
+        leftArrow.addEventListener("click", () => {
+            let previousIndex = currentIndex - 1;
+            if (previousIndex < 0) previousIndex = thumbnailContainers.length - 1;
+            updateCarousel(previousINdex);
+        })
+
+        const modal = document.querySelector("#videoModal");
+        const modalPlayer = document.querySelector("#modalPlayer");
+        const closeBtn = document.querySelector(".close-btn");
+
+        playButton.addEventListener("click", () => {
+            const currentActiveSlide = thumbnailContainers[currentIndex];
+            const videoId = currentActiveSlide.getAttribute("data-video-id");
+
+            if (videoId) {
+                modalPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                modal.classList.add("open");
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove("open");
+            setTimeout(() => {
+                modalPlayer.src = "";
+            }, 400);
+        }
+
+        // Close triggers
+        closeBtn.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
     });
 
 
-</script>
 </script>
 
 </html>
